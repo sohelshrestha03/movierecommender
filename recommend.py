@@ -126,7 +126,13 @@ class MovieRecommender(QWidget):
             if my_genre in genre or genre in my_genre:
                 #In recommendation it will avoid to show same movie name enter by user
                 if self.m.loc[i,"movie_title"]!=user_movie:
-                   recommend_data.append(self.m.iloc[i]['movie_title'])
+                   t=self.m.iloc[i]['movie_title']
+                   g=self.m.iloc[i]['movie_genre']
+                   y=self.m.iloc[i]['years']
+                   i_sc=self.m.iloc[i]['imb_rating']
+                   show_detail=f"Title: {t} | Genre: {g} | Year: {y} | IMB Rating: {i_sc}"
+                   recommend_data.append(show_detail)
+
 
         if recommend_data:
          self.result.setText("\n".join(recommend_data))
